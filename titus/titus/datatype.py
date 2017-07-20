@@ -801,7 +801,7 @@ class ForwardDeclarationParser(object):
             elif description.get("type") == "array" and "items" in description:
                 return AvroArray(self.getAvroType(description["items"]))
             elif description.get("type") == "map" and "values" in description:
-                return AvroArray(self.getAvroType(description["values"]))
+                return AvroMap(self.getAvroType(description["values"]))
             elif description.get("type") in ("fixed", "enum", "record"):
                 if self.names.has_name(description.get("name"), description.get("namespace")):
                     return schemaToAvroType(self.names.get_name(description.get("name"), description.get("namespace")))
